@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="lib/semantic.min.css">
+    <script src="lib/jquery-3.3.1.min.js" ></script>
+    <script src="lib/semantic.min.js" ></script>
+</head>
+<body>
+
+<style>
+    body {  background-color: #F5F5F5;  }
+    .container {  margin-top: 2px;  }
+</style>
+
+<div class="ui container">
+
+    <div class="ui segment">
+        <div class="ui grid">
+            <div class="four wide column">
+                <h3 class="ui header">
+                    <img class="ui small image" src="image/icon_волк.png">
+                    <img class="ui small image" src="image/icon_лиса.png">
+                    <img class="ui small image" src="image/icon_медведь.png">
+                    <img class="ui small image" src="image/icon_олень.png">
+                    <br>
+                    <div class="content">
+                        Растения и Животные РБ
+                    </div>
+                </h3>
+            </div>
+            <div class="four wide column"></div>
+            <div class="four wide column"></div>
+            <div class="four wide column">
+                <div class="ui buttons">
+                    <div id="but_entry" class="ui button">Вход</div>
+                    <div id="but_registration" class="ui button">Регистрация</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui secondary menu">
+            <div class="right menu">
+                <div class="ui dropdown item">
+                    <div class="text">Виды</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item">Растения</a>
+                        <a class="item">Животные</a>
+                    </div>
+                </div>
+                <div class="ui dropdown item">Карта</div>
+                <div class="ui dropdown item">
+                    <div class="text">Фото</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item">Последние фото</a>
+                        <a class="item">Добавить фото</a>
+                        <a class="item">Найти фото</a>
+                    </div>
+                </div>
+                <div class="ui dropdown item">
+                    <div class="text">Записи</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item">Последние записи</div>
+                        <a class="item">Добавить запись</a>
+                    </div>
+                </div>
+                <div class="ui dropdown item">О проекте</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui four top attached steps">
+        <div class="step">
+            <i class="paw icon"></i>
+            <div class="content">
+                <div class="title">N</div>
+                <div class="description">Видов в системе</div>
+            </div>
+        </div>
+        <div class="step">
+            <i class="user circle icon"></i>
+            <div class="content">
+                <div class="title">N</div>
+                <div class="description">Пользователей</div>
+            </div>
+        </div>
+        <div class="step">
+            <i class="edit icon"></i>
+            <div class="content">
+                <div class="title">N</div>
+                <div class="description">Записей</div>
+            </div>
+        </div>
+        <div class="step">
+            <i class="camera icon"></i>
+            <div class="content">
+                <div class="title">N</div>
+                <div class="description">Фотографий</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui attached segment">
+
+    </div>
+
+</div>
+
+
+<!--Модальное окно регистрации-->
+<div id="registration" class="ui mini modal"> <i class="close icon"></i>
+    <div class="header">
+        <div class="ui one column stackable center aligned page grid">
+            <div class="column threaded wide">Регистрация</div>
+        </div>
+    </div>
+    <div class="content">
+        <form class="ui form" method="post" action="example.php">
+            <div class="field">
+                <label>Имя</label>
+                <input type="text" name="first name" placeholder="First Name">
+            </div>
+            <div class="field">
+                <label>Фамилия</label>
+                <input type="text" name="last name" placeholder="Last Name">
+            </div>
+            <div class="field">
+                <label>Пароль</label>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <div class="field">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="agree">
+                    <label>Я согласен с Условиями использования</label>
+                </div>
+            </div>
+            <div class="ui error message"></div>
+            <div class="actions">
+                <div class="ui one column stackable center aligned page grid">
+                    <div class="column threaded wide">
+                        <button class="ui button" type="submit">Зарегистрироваться</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--Модальное окно входа-->
+<div id="entry" class="ui mini modal"> <i class="close icon"></i>
+    <div class="header">
+        <div class="ui one column stackable center aligned page grid">
+            <div class="column threaded wide">Вход</div>
+        </div>
+    </div>
+    <div class="content">
+        <form class="ui form" method="post" action="example.php">
+            <div class="field">
+                <label>Имя</label>
+                <input type="text" name="first name" placeholder="First Name + Last Name">
+            </div>
+            <div class="field">
+                <label>Пароль</label>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <div class="ui error message"></div>
+            <div class="actions">
+                <div class="ui one column stackable center aligned page grid">
+                    <div class="column threaded wide">
+                        <button class="ui button" type="submit">Войти</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function()
+    {
+        $('.ui.dropdown').dropdown();
+
+
+        //Валидация регистрации
+        $('#registration').form(
+            {
+                fields:
+                    {
+                        first_name:
+                            {
+                                identifier: 'first name',
+                                rules: [
+                                    {
+                                        type: 'empty',
+                                        prompt: 'Please enter your first name'
+                                    }
+                                ]
+                            },
+                        last_name:
+                            {
+                                identifier: 'last name',
+                                rules: [
+                                    {
+                                        type: 'empty',
+                                        prompt: 'Please enter your last name'
+                                    }
+                                ]
+                            },
+                        password:
+                            {
+                                identifier: 'password',
+                                rules: [
+                                    {
+                                        type: 'minLength[10]',
+                                        prompt: 'Your password must be at least {ruleValue} characters'
+                                    }
+                                ]
+                            },
+                        terms:
+                            {
+                                identifier: 'agree',
+                                rules: [
+                                    {
+                                        type: 'checked',
+                                        prompt: 'You must agree to the terms and conditions'
+                                    }
+                                ]
+                            }
+                    }
+            });
+
+        //Вызов окна регистрации
+        $('#but_registration').click(function () {
+            $('#registration').modal('show');
+        });
+
+        //Вызов окна входа
+        $('#but_entry').click(function () {
+            $('#entry').modal('show');
+        });
+
+
+    });
+</script>
+
+</body>
+</html>
