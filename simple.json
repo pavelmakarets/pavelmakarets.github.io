@@ -1,0 +1,6 @@
+{
+  name: 'pavel',
+  yeard: 21,
+  male: true,
+  stack: ['js','json']
+}
